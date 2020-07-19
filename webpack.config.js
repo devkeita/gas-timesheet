@@ -8,7 +8,7 @@ require('dotenv').config();
 module.exports = {
     mode: 'development',
     entry: {
-        main: './main.ts'
+        main: './src/main.ts'
     },
     devtool: false,
     output: {
