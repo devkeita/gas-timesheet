@@ -6,7 +6,8 @@
     "build": "rimraf dist && webpack && cpx appsscript.json dist"
   },
   "dependencies": {
-    "@types/node": "^14.0.23"
+    "@types/node": "^14.0.23",
+    "moment": "^2.27.0"
   },
   "devDependencies": {
     "@types/google-apps-script": "^1.0.14",
