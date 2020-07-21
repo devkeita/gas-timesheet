@@ -1,9 +1,10 @@
 import Spreadsheet = GoogleAppsScript.Spreadsheet.Spreadsheet;
 import Sheet = GoogleAppsScript.Spreadsheet.Sheet;
-import Timesheet from "./timesheet";
+import GasTimesheet from "./gasTimesheet";
 import * as moment from "moment";
+import {Sheets, Timesheet} from "../interfaces";
 
-export default class Sheets {
+export default class GasSheets implements Sheets {
     constructor(public spreadSheet: Spreadsheet) {}
 
     private createSheet(username: string): Sheet {
@@ -27,6 +28,6 @@ export default class Sheets {
         if (!sheet) {
             sheet = this.createSheet(username);
         }
-        return new Timesheet(sheet);
+        return new GasTimesheet(sheet);
     }
 }

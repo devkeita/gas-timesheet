@@ -1,8 +1,9 @@
 import * as moment from "moment";
 import Moment = moment.Moment;
 import Range = GoogleAppsScript.Spreadsheet.Range;
+import {Row} from "../interfaces";
 
-export default class Row {
+export default class GasRow implements Row {
     constructor(private username: string, private cells: Range) {}
 
     getUsername(): string {

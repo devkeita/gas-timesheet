@@ -1,8 +1,9 @@
 import URLFetchRequestOptions = GoogleAppsScript.URL_Fetch.URLFetchRequestOptions;
 
 import Response from "../response";
+import {ResponseHandler} from "../interfaces";
 
-export default class ResponseHandler {
+export default class SlackResponseHandler implements ResponseHandler {
     private slackIncomingURL = process.env.SLACK_INCOMING_WEBHOOK_URL
 
     handle(response: Response) {

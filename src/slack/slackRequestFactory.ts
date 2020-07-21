@@ -1,6 +1,7 @@
 import Request from "../request";
+import {RequestFactory} from "../interfaces";
 
-export default class RequestFactory {
+export default class SlackRequestFactory implements RequestFactory{
     constructor() {}
 
     factory(e): Request {

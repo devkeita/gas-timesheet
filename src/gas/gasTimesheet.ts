@@ -1,10 +1,12 @@
 import Sheet = GoogleAppsScript.Spreadsheet.Sheet;
-import * as moment from "moment";
-import Moment = moment.Moment;
-import Row from "./row";
 import Range = GoogleAppsScript.Spreadsheet.Range;
 
-export default class Timesheet {
+import * as moment from "moment";
+import Moment = moment.Moment;
+import GasRow from "./gasRow";
+import {Timesheet} from "../interfaces";
+
+export default class GasTimesheet implements Timesheet {
     readonly username: string;
 
     readonly locale: string;
@@ -14,12 +16,12 @@ export default class Timesheet {
         this.locale = this.sheet.getRange('B1').getValue().toString();
     }
 
-    getRow(date: Moment): Row {
+    getRow(date: Moment): GasRow {
         const range = this.getRange(date);
         if (!range) {
             return null;
         }
-        return new Row(this.username, range);
+        return new GasRow(this.username, range);
     }
 
     private getRange(date: Moment): Range {
