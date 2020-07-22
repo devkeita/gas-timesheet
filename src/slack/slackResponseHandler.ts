@@ -2,9 +2,12 @@ import URLFetchRequestOptions = GoogleAppsScript.URL_Fetch.URLFetchRequestOption
 
 import Response from "../response";
 import {ResponseHandler} from "../interfaces";
+import {inject, injectable} from "inversify";
+import {TYPES} from "../types";
 
+@injectable()
 export default class SlackResponseHandler implements ResponseHandler {
-    private slackIncomingURL = process.env.SLACK_INCOMING_WEBHOOK_URL
+    constructor(@inject(TYPES.SlackIncomingUrl) readonly slackIncomingUrl) {}
 
     handle(response: Response) {
         const payload = {
@@ -16,8 +19,8 @@ export default class SlackResponseHandler implements ResponseHandler {
             payload: JSON.stringify(payload)
         };
 
-        if (this.slackIncomingURL) {
-            UrlFetchApp.fetch(this.slackIncomingURL, send_options);
+        if (this.slackIncomingUrl) {
+            UrlFetchApp.fetch(this.slackIncomingUrl, send_options);
         }
     }
 }

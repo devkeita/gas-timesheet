@@ -1,7 +1,9 @@
 import Request from "../request";
 import {RequestFactory} from "../interfaces";
+import {injectable} from "inversify";
 
-export default class SlackRequestFactory implements RequestFactory{
+@injectable()
+export default class SlackRequestFactory implements RequestFactory {
     constructor() {}
 
     factory(e): Request {
