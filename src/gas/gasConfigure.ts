@@ -1,9 +1,13 @@
 import Properties = GoogleAppsScript.Properties.Properties;
 
-import { Configure } from '../interfaces';
+import {inject, injectable} from "inversify";
 
+import { Configure } from '../interfaces';
+import {TYPES} from "../types";
+
+@injectable()
 export default class GasConfigure implements Configure {
-    constructor(private properties: Properties) {}
+    constructor(@inject(TYPES.ScriptProperties) private properties: Properties) {}
 
     get(key: string): string | null {
         return this.properties.getProperty(key);

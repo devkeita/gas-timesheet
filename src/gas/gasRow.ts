@@ -1,6 +1,8 @@
+import Range = GoogleAppsScript.Spreadsheet.Range;
+
 import * as moment from "moment";
 import Moment = moment.Moment;
-import Range = GoogleAppsScript.Spreadsheet.Range;
+
 import {Row} from "../interfaces";
 
 export default class GasRow implements Row {
