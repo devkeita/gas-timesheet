@@ -1,6 +1,7 @@
-import {inject} from "inversify";
+import {inject, injectable} from "inversify";
 import {TYPES} from "../types";
 
+@injectable()
 export default class SlackUsernameConverter {
     constructor(@inject(TYPES.BotUserToken) readonly token: string) {}
 
