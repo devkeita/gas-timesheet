@@ -1,11 +1,16 @@
 import Spreadsheet = GoogleAppsScript.Spreadsheet.Spreadsheet;
 import Sheet = GoogleAppsScript.Spreadsheet.Sheet;
-import GasTimesheet from "./gasTimesheet";
-import * as moment from "moment";
-import {Sheets, Timesheet} from "../interfaces";
 
+import * as moment from "moment";
+import {inject, injectable} from "inversify";
+
+import GasTimesheet from "./gasTimesheet";
+import {Sheets, Timesheet} from "../interfaces";
+import {TYPES} from "../types";
+
+@injectable()
 export default class GasSheets implements Sheets {
-    constructor(public spreadSheet: Spreadsheet) {}
+    constructor(@inject(TYPES.Spreadsheet) private spreadSheet: Spreadsheet) {}
 
     private createSheet(username: string): Sheet {
         const sheet = this.spreadSheet.insertSheet(username);

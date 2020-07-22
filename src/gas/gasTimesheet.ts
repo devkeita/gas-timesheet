@@ -3,6 +3,7 @@ import Range = GoogleAppsScript.Spreadsheet.Range;
 
 import * as moment from "moment";
 import Moment = moment.Moment;
+
 import GasRow from "./gasRow";
 import {Timesheet} from "../interfaces";
 

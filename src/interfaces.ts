@@ -3,6 +3,15 @@ import {Moment} from "moment";
 import Request from './request';
 import Response from './response';
 
+export interface Configure {
+    get(key: string): string | null;
+    set(key: string, value: string);
+    getSheetID(): string | null;
+    setSheetID(sheetID: string);
+    getIgnoreUsers(): string;
+    setIgnoreUsers(ignoreUsers: string);
+}
+
 export interface Row {
     getUsername(): string;
 
