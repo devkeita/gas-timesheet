@@ -1,10 +1,15 @@
 import Request from "../request";
 import {RequestFactory} from "../interfaces";
-import {injectable} from "inversify";
+import {inject, injectable} from "inversify";
+import {TYPES} from "../types";
+import UserResolver from "../userResolver";
+import SlackUsernameConverter from "./slackUsernameConverter";
 
 @injectable()
 export default class SlackRequestFactory implements RequestFactory {
-    constructor() {}
+    constructor(@inject(TYPES.UserResolver) readonly userResolver: UserResolver,
+                @inject(TYPES.UsernameConverter) readonly usernameConverter: SlackUsernameConverter
+    ) {}
 
     factory(e): Request {
         const params = JSON.parse(e.postData.getDataAsString());
@@ -24,6 +29,15 @@ export default class SlackRequestFactory implements RequestFactory {
             return null;
         }
 
-        return new Request(params.event.text);
+        const username = this.usernameConverter.convert(params.event.user);
+
+        const user = this.userResolver.resolve(username);
+
+        if (!user) {
+            // ユーザーがなかったら
+            return null;
+        }
+
+        return new Request(params.event.text, user);
     }
 }

@@ -26,7 +26,7 @@ export default class GasConfigure implements Configure {
     }
 
     getIgnoreUsers(): string {
-        return this.get('IgnoreUsers');
+        return (this.get('IgnoreUsers') || '');
     }
 
     setIgnoreUsers(ignoreUsers: string) {
