@@ -1,6 +1,7 @@
 const TYPES = {
     SlackIncomingUrl: Symbol.for("SlackIncomingUrl"),
     BotUserToken: Symbol.for("BotUserToken"),
+    Container: Symbol.for("Container"),
     ScriptProperties: Symbol.for("ScriptProperties"),
     Configure: Symbol.for("Configure"),
     Spreadsheet: Symbol.for("Spreadsheet"),
@@ -9,6 +10,8 @@ const TYPES = {
     UsernameConverter: Symbol.for("UsernameConverter"),
     RequestFactory: Symbol.for("RequestFactory"),
     ResponseHandler: Symbol.for("ResponseHandler"),
+    CommandRegistry: Symbol.for("CommandRegistry"),
+    CommandResolver: Symbol.for("CommandResolver"),
 }
 
 export {TYPES};
