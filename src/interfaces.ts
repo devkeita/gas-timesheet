@@ -38,7 +38,6 @@ export interface Row {
 
     getMidnightHours(): number;
     setMidnightHours(workedHour: number);
-
 }
 
 export interface Sheets {
@@ -55,4 +54,8 @@ export interface RequestFactory {
 
 export interface ResponseHandler {
     handle(response: Response);
+}
+
+export interface Command {
+    execute(request: Request): Response;
 }
