@@ -1,12 +1,12 @@
 import Spreadsheet = GoogleAppsScript.Spreadsheet.Spreadsheet;
 import Sheet = GoogleAppsScript.Spreadsheet.Sheet;
 
-import * as moment from "moment";
 import {inject, injectable} from "inversify";
 
 import GasTimesheet from "./gasTimesheet";
 import {Sheets, Timesheet} from "../interfaces";
 import {TYPES} from "../types";
+import * as dayjs from "dayjs";
 
 @injectable()
 export default class GasSheets implements Sheets {
@@ -23,7 +23,7 @@ export default class GasSheets implements Sheets {
         sheet.getRange('B2:B').setNumberFormat('hh:mm');
         sheet.getRange('C2:C').setNumberFormat('hh:mm');
 
-        sheet.getRange('A3').setValue(moment().toDate())
+        sheet.getRange('A3').setValue(dayjs().toDate());
 
         return sheet;
     }
