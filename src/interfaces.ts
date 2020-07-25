@@ -1,4 +1,5 @@
-import {Moment} from "moment";
+import * as dayjs from "dayjs";
+import Dayjs = dayjs.Dayjs;
 
 import Request from './request';
 import Response from './response';
@@ -15,14 +16,14 @@ export interface Configure {
 export interface Row {
     getUsername(): string;
 
-    getDate(): Moment;
-    setDate(date: Moment);
+    getDate(): Dayjs;
+    setDate(date: Dayjs);
 
-    getSignIn(): Moment;
-    setSignIn(signIn: Moment);
+    getSignIn(): Dayjs;
+    setSignIn(signIn: Dayjs);
 
-    getSignOut(): Moment;
-    setSignOut(signIn: Moment);
+    getSignOut(): Dayjs;
+    setSignOut(signIn: Dayjs);
 
     getNote(): string;
     setNote(note: string);
@@ -45,7 +46,7 @@ export interface Sheets {
 }
 
 export interface Timesheet {
-    getRow(date: Moment): Row;
+    getRow(date: Dayjs): Row;
 }
 
 export interface RequestFactory {

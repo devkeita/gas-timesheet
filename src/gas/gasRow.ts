@@ -1,7 +1,7 @@
 import Range = GoogleAppsScript.Spreadsheet.Range;
 
-import * as moment from "moment";
-import Moment = moment.Moment;
+import * as dayjs from "dayjs";
+import Dayjs = dayjs.Dayjs;
 
 import {Row} from "../interfaces";
 
@@ -12,35 +12,35 @@ export default class GasRow implements Row {
         return this.username;
     }
 
-    getDate(): Moment {
-        return moment(this.cells.getCell(1, 1).getValue()).startOf('day');
+    getDate(): Dayjs {
+        return dayjs(this.cells.getCell(1, 1).getValue()).startOf('day');
     }
 
-    setDate(date: Moment): void {
+    setDate(date: Dayjs): void {
         this.cells.getCell(1, 1).setValue(date.clone().startOf('day').toDate());
     }
 
-    getSignIn(): Moment {
+    getSignIn(): Dayjs {
         const date = this.cells.getCell(1, 2).getValue();
         if (!date) {
             return null;
         }
-        return moment(date);
+        return dayjs(date);
     }
 
-    setSignIn(date: Moment): void {
+    setSignIn(date: Dayjs): void {
         this.cells.getCell(1, 2).setValue(date.toDate());
     }
 
-    getSignOut(): Moment {
+    getSignOut(): Dayjs {
         const date = this.cells.getCell(1, 3).getValue();
         if (!date) {
             return null;
         }
-        return moment(date);
+        return dayjs(date);
     }
 
-    setSignOut(date: Moment): void {
+    setSignOut(date: Dayjs): void {
         this.cells.getCell(1, 3).setValue(date.toDate());
     }
 
