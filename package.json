@@ -7,8 +7,10 @@
   },
   "dependencies": {
     "@types/node": "^14.0.23",
+    "@types/node-polyglot": "^2.4.1",
     "dayjs": "^1.8.30",
     "inversify": "^5.0.1",
+    "node-polyglot": "^2.4.0",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
