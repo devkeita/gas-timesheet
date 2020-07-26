@@ -1,8 +1,11 @@
+import {injectable} from "inversify";
+
 declare function require(x: string): any;
 
 const acceptableLanguages = ['ja'];
 
-export default class Messages {
+@injectable()
+export default class Message {
     private map: {};
 
     constructor() {

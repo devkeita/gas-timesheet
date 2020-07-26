@@ -8,6 +8,8 @@ const TYPES = {
     Sheets: Symbol.for("Sheets"),
     UserResolver: Symbol.for("UserResolver"),
     UsernameConverter: Symbol.for("UsernameConverter"),
+    Message: Symbol.for("Message"),
+    I18nFactory: Symbol.for("I18nFactory"),
     RequestFactory: Symbol.for("RequestFactory"),
     ResponseHandler: Symbol.for("ResponseHandler"),
     CommandRegistry: Symbol.for("CommandRegistry"),

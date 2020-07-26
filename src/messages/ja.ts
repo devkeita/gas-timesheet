@@ -28,6 +28,7 @@ export default {
         am: '午前',
         pm: '午後',
         oclock: '時',
+        min: '分',
         hours: '時間',
         yesterday: '昨日',
         today: '今日',
