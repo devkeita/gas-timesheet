@@ -11,7 +11,7 @@ export default {
         signOutFirst:
             '<@%{username}> %{date}はまだ退勤していません。このコマンドを退勤してから実行してください',
         noRest: '<@%{username}> %{date}を休憩なしに変更しました',
-        restHours: '<@%{username}> %{date}の休憩(中抜け)を%{hours}に変更しました',
+        restHours: '<@%{username}> %{date}の休憩(中抜け)を%{hours}時間に変更しました',
         dayTotal:
             '<@%{username}> さんの%{date}の勤務は%{signIn}～%{signOut}、就業時間%{workedHours}時間、休憩%{restTime}時間、時間外労働%{overtime}時間、深夜労働%{latetime}時間です',
         monthTotal:
