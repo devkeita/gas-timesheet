@@ -90,7 +90,7 @@ export default class I18n extends Polyglot {
 
 
     parseHours(str: string): number | null {
-        const regex = new RegExp('(\\d*\\.?\\d)\\s*' + this.t('dateTimeSettings.hours'), 'i');
+        const regex = new RegExp('(\\d*\\.?\\d*)\\s*' + this.t('dateTimeSettings.hours'), 'i');
         const matches = str.match(regex);
         if (matches) {
             return Number(matches[1]);

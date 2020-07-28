@@ -13,17 +13,17 @@ export default class CommandSignIn implements Command {
 
         const now = dayjs();
 
-        const parseDate = i18n.parseDate(request.body);
-        const parseTime = i18n.parseTime(request.body);
+        const parsedDate = i18n.parseDate(request.body);
+        const parsedTime = i18n.parseTime(request.body);
 
-        const date = parseDate || now;
-        const time = parseTime || now;
+        const date = parsedDate || now;
+        const time = parsedTime || now;
 
         const row = user.timesheet.getRow(date);
 
         if (row) {
             if (row.getSignIn()) {
-                if (!parseDate) {
+                if (!parsedDate) {
                     // 既に出勤している
                     return new Response(
                         i18n.template('alreadySignedIn', {
