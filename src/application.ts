@@ -16,6 +16,8 @@ import CommandRegistry from "./command/commandRegistry";
 import CommandResolver from "./command/commandResolver";
 import i18nFactory from "./i18nFactory";
 import Message from "./messages/message";
+import CommandNoRest from "./command/CommandNoRest";
+import CommandRestHours from "./command/CommandRestHours";
 import CommandSignIn from "./command/commandSignIn";
 
 export default class Application extends Container {
@@ -44,5 +46,7 @@ export default class Application extends Container {
         this.bind<CommandResolver>(TYPES.CommandResolver).to(CommandResolver);
 
         this.bind<Command>(TYPES.CommandSignIn).to(CommandSignIn);
+        this.bind<Command>(TYPES.CommandNoRest).to(CommandNoRest);
+        this.bind<Command>(TYPES.CommandRestHours).to(CommandRestHours);
     }
 }
