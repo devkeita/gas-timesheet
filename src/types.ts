@@ -14,6 +14,7 @@ const TYPES = {
     ResponseHandler: Symbol.for("ResponseHandler"),
     CommandRegistry: Symbol.for("CommandRegistry"),
     CommandResolver: Symbol.for("CommandResolver"),
+    CommandSignIn: Symbol.for("CommandSignIn"),
 }
 
 export {TYPES};

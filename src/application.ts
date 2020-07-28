@@ -16,6 +16,7 @@ import CommandRegistry from "./command/commandRegistry";
 import CommandResolver from "./command/commandResolver";
 import i18nFactory from "./i18nFactory";
 import Message from "./messages/message";
+import CommandSignIn from "./command/commandSignIn";
 
 export default class Application extends Container {
     boot() {
@@ -41,5 +42,7 @@ export default class Application extends Container {
 
         this.bind<CommandRegistry>(TYPES.CommandRegistry).to(CommandRegistry);
         this.bind<CommandResolver>(TYPES.CommandResolver).to(CommandResolver);
+
+        this.bind<Command>(TYPES.CommandSignIn).to(CommandSignIn);
     }
 }

@@ -3,6 +3,7 @@ import Dayjs = dayjs.Dayjs;
 
 import Request from './request';
 import Response from './response';
+import I18n from "./i18n";
 
 export interface Configure {
     get(key: string): string | null;
@@ -58,5 +59,5 @@ export interface ResponseHandler {
 }
 
 export interface Command {
-    execute(request: Request): Response;
+    execute(request: Request, i18n: I18n): Response;
 }
