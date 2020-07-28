@@ -15,6 +15,7 @@ const TYPES = {
     CommandRegistry: Symbol.for("CommandRegistry"),
     CommandResolver: Symbol.for("CommandResolver"),
     CommandSignIn: Symbol.for("CommandSignIn"),
+    CommandSignOut: Symbol.for("CommandSignOut"),
     CommandNoRest: Symbol.for("CommandNoRest"),
     CommandRestHours: Symbol.for("CommandRestHours"),
 }
