@@ -20,7 +20,8 @@ const TYPES = {
     CommandRestHours: Symbol.for("CommandRestHours"),
     QuoterHourTimeRounder: Symbol.for("QuoterHourTimeRounder"),
     NormalWorkedHoursCalculator: Symbol.for("NormalWorkedHoursCalculator"),
-    NormalOvertimeHoursCalculator: Symbol.for("NormalOvertimeHoursCalculator")
+    NormalOvertimeHoursCalculator: Symbol.for("NormalOvertimeHoursCalculator"),
+    NormalMidnightHoursCalculator: Symbol.for("NormalMidnightHoursCalculator"),
 }
 
 export {TYPES};
