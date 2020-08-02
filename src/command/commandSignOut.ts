@@ -1,13 +1,16 @@
 import * as dayjs from "dayjs";
-import {injectable} from "inversify";
+import {inject, injectable} from "inversify";
 
 import {Command} from "../interfaces";
 import Response from "../response";
 import Request from "../request";
 import I18n from "../i18n";
+import {TYPES} from "../types";
 
 @injectable()
 export default class CommandSignOut implements Command {
+    constructor(@inject(TYPES.CommandDayTotal) private commandDayTotal: Command) {}
+
     execute(request: Request, i18n: I18n): Response {
         const user = request.user;
 
@@ -41,17 +44,26 @@ export default class CommandSignOut implements Command {
         }
 
         let message;
-        row.setSignOut(time);
         if (row.getSignOut()) {
+            row.setSignOut(time);
+            this.commandDayTotal.execute(request, i18n);
             message = i18n.template('signOutUpdate', {
                 username: user.username,
                 date: time.format('YYYY/MM/DD'),
-                time: time.format('HH:mm')
+                time: time.format('HH:mm'),
+                signIn: row.getSignIn().format('HH:mm'),
+                signOut: row.getSignIn().format('HH:mm'),
+                workedHours: row.getWorkedHours(),
             });
         } else {
+            row.setSignOut(time);
+            this.commandDayTotal.execute(request, i18n);
             message = i18n.template('signOut', {
                 username: user.username,
-                datetime: time.format('YYYY/MM/DD HH:mm')
+                datetime: time.format('YYYY/MM/DD HH:mm'),
+                signIn: row.getSignIn().format('HH:mm'),
+                signOut: row.getSignOut().format('HH:mm'),
+                workedHours: row.getWorkedHours(),
             });
         }
         return new Response(message);

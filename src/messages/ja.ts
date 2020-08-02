@@ -3,15 +3,15 @@ export default {
         signIn: '<@%{username}> おはようございます (%{datetime})',
         alreadySignedIn: '<@%{username}> %{date}はもう出勤してますよ',
         signInUpdate: '<@%{username}> %{date}の出勤時間を%{time}へ変更しました',
-        signOut: '<@%{username}> お疲れ様でした (%{datetime})',
+        signOut: '<@%{username}> お疲れ様でした（%{signIn}〜%{signOut} 就業%{workedHours}時間）',
         alreadySignedOut: '<@%{username}> %{date}はもう退勤してますよ',
-        signOutUpdate: '<@%{username}> %{date}の退勤を%{time}に変更しました',
+        signOutUpdate: '<@%{username}> %{date}の退勤を%{time}に変更しました（%{signIn}〜%{signOut} 就業%{workedHours}時間）',
         signInFirst:
             '<@%{username}> %{date}はまだ出勤していません。このコマンドは出勤してから実行してください',
         signOutFirst:
             '<@%{username}> %{date}はまだ退勤していません。このコマンドを退勤してから実行してください',
-        noRest: '<@%{username}> %{date}を休憩なしに変更しました',
-        restHours: '<@%{username}> %{date}の休憩(中抜け)を%{hours}時間に変更しました',
+        noRest: '<@%{username}> %{date}を休憩なしに変更しました（%{signIn}〜%{signOut} 就業%{workedHours}時間）',
+        restHours: '<@%{username}> %{date}の休憩(中抜け)を%{hours}時間に変更しました（%{signIn}〜%{signOut} 就業%{workedHours}時間）',
         dayTotal:
             '<@%{username}> さんの%{date}の勤務は%{signIn}～%{signOut}、就業時間%{workedHours}時間、休憩%{restTime}時間、時間外労働%{overtime}時間、深夜労働%{latetime}時間です',
         monthTotal:
