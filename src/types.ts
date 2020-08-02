@@ -14,14 +14,15 @@ const TYPES = {
     ResponseHandler: Symbol.for("ResponseHandler"),
     CommandRegistry: Symbol.for("CommandRegistry"),
     CommandResolver: Symbol.for("CommandResolver"),
+    CommandDayTotal: Symbol.for("CommandDayTotal"),
     CommandSignIn: Symbol.for("CommandSignIn"),
     CommandSignOut: Symbol.for("CommandSignOut"),
     CommandNoRest: Symbol.for("CommandNoRest"),
     CommandRestHours: Symbol.for("CommandRestHours"),
-    QuoterHourTimeRounder: Symbol.for("QuoterHourTimeRounder"),
     NormalWorkedHoursCalculator: Symbol.for("NormalWorkedHoursCalculator"),
     NormalOvertimeHoursCalculator: Symbol.for("NormalOvertimeHoursCalculator"),
     NormalMidnightHoursCalculator: Symbol.for("NormalMidnightHoursCalculator"),
+    Calculator: Symbol.for("Calculator"),
 }
 
 export {TYPES};

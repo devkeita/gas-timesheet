@@ -20,10 +20,11 @@ import CommandNoRest from "./command/CommandNoRest";
 import CommandRestHours from "./command/CommandRestHours";
 import CommandSignIn from "./command/commandSignIn";
 import CommandSignOut from "./command/CommandSignOut";
-import QuoterHourTimeRounder from "./time-calculator/quoterHourTimeRounder";
 import NormalWorkedHoursCalculator from "./time-calculator/normalWorkedHoursCalculator";
 import NormalOvertimeHoursCalculator from "./time-calculator/normalOvertimeHoursCalculator";
 import NormalMidnightHoursCalculator from "./time-calculator/normalMidnightHoursCalculator";
+import Calculator from "./calculator";
+import CommandDayTotal from "./command/commandDayTotal";
 
 export default class Application extends Container {
     boot() {
@@ -50,14 +51,15 @@ export default class Application extends Container {
         this.bind<CommandRegistry>(TYPES.CommandRegistry).to(CommandRegistry);
         this.bind<CommandResolver>(TYPES.CommandResolver).to(CommandResolver);
 
+        this.bind<Command>(TYPES.CommandDayTotal).to(CommandDayTotal);
         this.bind<Command>(TYPES.CommandSignIn).to(CommandSignIn);
         this.bind<Command>(TYPES.CommandSignOut).to(CommandSignOut);
         this.bind<Command>(TYPES.CommandNoRest).to(CommandNoRest);
         this.bind<Command>(TYPES.CommandRestHours).to(CommandRestHours);
 
-        this.bind<QuoterHourTimeRounder>(TYPES.QuoterHourTimeRounder).to(QuoterHourTimeRounder);
         this.bind<TimeCalculator>(TYPES.NormalWorkedHoursCalculator).to(NormalWorkedHoursCalculator);
         this.bind<TimeCalculator>(TYPES.NormalOvertimeHoursCalculator).to(NormalOvertimeHoursCalculator);
         this.bind<TimeCalculator>(TYPES.NormalMidnightHoursCalculator).to(NormalMidnightHoursCalculator);
+        this.bind<Calculator>(TYPES.Calculator).to(Calculator);
     }
 }

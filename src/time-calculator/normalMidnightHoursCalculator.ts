@@ -6,12 +6,14 @@ import {TimeCalculator} from "../interfaces";
 @injectable()
 export default class NormalMidnightHoursCalculator implements TimeCalculator {
     calculate(signIn: Dayjs, signOut: Dayjs, restTime: number): number {
-        return Math.max(
-            0,
-            signOut
-                .clone()
-                .startOf('minute')
-                .diff(signIn.clone().set('hour', 22).startOf('hour'), 'hour', true)
-        );
+        const workedMin = signOut
+            .clone()
+            .startOf('minute')
+            .diff(signIn.clone().set('hour', 22).startOf('hour'), 'minute', true)
+        ;
+
+        const workedHours = (workedMin - (workedMin % 15)) / 60;
+
+        return Math.max(0, workedHours);
     }
 }
