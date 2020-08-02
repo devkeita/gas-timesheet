@@ -4,7 +4,7 @@ import Spreadsheet = GoogleAppsScript.Spreadsheet.Spreadsheet;
 import "reflect-metadata";
 import {Container, interfaces} from "inversify";
 
-import {Configure, Sheets, RequestFactory, ResponseHandler, Command} from "./interfaces";
+import {Configure, Sheets, RequestFactory, ResponseHandler, Command, TimeCalculator} from "./interfaces";
 import SlackRequestFactory from "./slack/slackRequestFactory";
 import {TYPES} from "./types";
 import SlackResponseHandler from "./slack/slackResponseHandler";
@@ -21,6 +21,7 @@ import CommandRestHours from "./command/CommandRestHours";
 import CommandSignIn from "./command/commandSignIn";
 import CommandSignOut from "./command/CommandSignOut";
 import QuoterHourTimeRounder from "./time-calculator/quoterHourTimeRounder";
+import NormalWorkedHoursCalculator from "./time-calculator/normalWorkedHoursCalculator";
 
 export default class Application extends Container {
     boot() {
@@ -53,5 +54,6 @@ export default class Application extends Container {
         this.bind<Command>(TYPES.CommandRestHours).to(CommandRestHours);
 
         this.bind<QuoterHourTimeRounder>(TYPES.QuoterHourTimeRounder).to(QuoterHourTimeRounder);
+        this.bind<TimeCalculator>(TYPES.NormalWorkedHourCalculator).to(NormalWorkedHoursCalculator);
     }
 }

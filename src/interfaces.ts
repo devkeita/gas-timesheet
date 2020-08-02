@@ -61,3 +61,7 @@ export interface ResponseHandler {
 export interface Command {
     execute(request: Request, i18n: I18n): Response;
 }
+
+export interface TimeCalculator {
+    calculate(signIn: Dayjs, signOut: Dayjs, restTime: number): number;
+}
