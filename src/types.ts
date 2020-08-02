@@ -19,7 +19,8 @@ const TYPES = {
     CommandNoRest: Symbol.for("CommandNoRest"),
     CommandRestHours: Symbol.for("CommandRestHours"),
     QuoterHourTimeRounder: Symbol.for("QuoterHourTimeRounder"),
-    NormalWorkedHourCalculator: Symbol.for("NormalWorkedHourCalculator")
+    NormalWorkedHoursCalculator: Symbol.for("NormalWorkedHoursCalculator"),
+    NormalOvertimeHoursCalculator: Symbol.for("NormalOvertimeHoursCalculator")
 }
 
 export {TYPES};

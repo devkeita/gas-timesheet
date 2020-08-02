@@ -22,6 +22,7 @@ import CommandSignIn from "./command/commandSignIn";
 import CommandSignOut from "./command/CommandSignOut";
 import QuoterHourTimeRounder from "./time-calculator/quoterHourTimeRounder";
 import NormalWorkedHoursCalculator from "./time-calculator/normalWorkedHoursCalculator";
+import NormalOvertimeHoursCalculator from "./time-calculator/normalOvertimeHoursCalculator";
 
 export default class Application extends Container {
     boot() {
@@ -54,6 +55,7 @@ export default class Application extends Container {
         this.bind<Command>(TYPES.CommandRestHours).to(CommandRestHours);
 
         this.bind<QuoterHourTimeRounder>(TYPES.QuoterHourTimeRounder).to(QuoterHourTimeRounder);
-        this.bind<TimeCalculator>(TYPES.NormalWorkedHourCalculator).to(NormalWorkedHoursCalculator);
+        this.bind<TimeCalculator>(TYPES.NormalWorkedHoursCalculator).to(NormalWorkedHoursCalculator);
+        this.bind<TimeCalculator>(TYPES.NormalOvertimeHoursCalculator).to(NormalOvertimeHoursCalculator);
     }
 }
