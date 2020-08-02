@@ -20,6 +20,7 @@ import CommandNoRest from "./command/CommandNoRest";
 import CommandRestHours from "./command/CommandRestHours";
 import CommandSignIn from "./command/commandSignIn";
 import CommandSignOut from "./command/CommandSignOut";
+import QuoterHourTimeRounder from "./time-calculator/quoterHourTimeRounder";
 
 export default class Application extends Container {
     boot() {
@@ -50,5 +51,7 @@ export default class Application extends Container {
         this.bind<Command>(TYPES.CommandSignOut).to(CommandSignOut);
         this.bind<Command>(TYPES.CommandNoRest).to(CommandNoRest);
         this.bind<Command>(TYPES.CommandRestHours).to(CommandRestHours);
+
+        this.bind<QuoterHourTimeRounder>(TYPES.QuoterHourTimeRounder).to(QuoterHourTimeRounder);
     }
 }

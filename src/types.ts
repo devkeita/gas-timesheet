@@ -18,6 +18,7 @@ const TYPES = {
     CommandSignOut: Symbol.for("CommandSignOut"),
     CommandNoRest: Symbol.for("CommandNoRest"),
     CommandRestHours: Symbol.for("CommandRestHours"),
+    QuoterHourTimeRounder: Symbol.for("QuoterHourTimeRounder"),
 }
 
 export {TYPES};
