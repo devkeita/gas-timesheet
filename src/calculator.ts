@@ -6,9 +6,9 @@ import {TYPES} from "./types";
 @injectable()
 export default class Calculator {
     constructor(
-        @inject(TYPES.NormalWorkedHoursCalculator) private normalWorkedHourCalculator: TimeCalculator,
-        @inject(TYPES.NormalOvertimeHoursCalculator) private normalOvertimeHoursCalculator: TimeCalculator,
-        @inject(TYPES.NormalMidnightHoursCalculator) private normalMidnightHoursCalculator: TimeCalculator,
+        @inject(TYPES.workedHoursCalculator) private normalWorkedHourCalculator: TimeCalculator,
+        @inject(TYPES.overtimeHoursCalculator) private normalOvertimeHoursCalculator: TimeCalculator,
+        @inject(TYPES.midnightHoursCalculator) private normalMidnightHoursCalculator: TimeCalculator,
     ) {}
 
     calculate(row: Row): void {

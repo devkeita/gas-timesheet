@@ -19,9 +19,9 @@ const TYPES = {
     CommandSignOut: Symbol.for("CommandSignOut"),
     CommandNoRest: Symbol.for("CommandNoRest"),
     CommandRestHours: Symbol.for("CommandRestHours"),
-    NormalWorkedHoursCalculator: Symbol.for("NormalWorkedHoursCalculator"),
-    NormalOvertimeHoursCalculator: Symbol.for("NormalOvertimeHoursCalculator"),
-    NormalMidnightHoursCalculator: Symbol.for("NormalMidnightHoursCalculator"),
+    workedHoursCalculator: Symbol.for("workedHoursCalculator"),
+    overtimeHoursCalculator: Symbol.for("overtimeHoursCalculator"),
+    midnightHoursCalculator: Symbol.for("midnightHoursCalculator"),
     Calculator: Symbol.for("Calculator"),
 }
 

@@ -16,13 +16,13 @@ import CommandRegistry from "./command/commandRegistry";
 import CommandResolver from "./command/commandResolver";
 import i18nFactory from "./i18nFactory";
 import Message from "./messages/message";
-import CommandNoRest from "./command/CommandNoRest";
-import CommandRestHours from "./command/CommandRestHours";
+import CommandNoRest from "./command/commandNoRest";
+import CommandRestHours from "./command/commandRestHours";
 import CommandSignIn from "./command/commandSignIn";
-import CommandSignOut from "./command/CommandSignOut";
-import NormalWorkedHoursCalculator from "./time-calculator/normalWorkedHoursCalculator";
-import NormalOvertimeHoursCalculator from "./time-calculator/normalOvertimeHoursCalculator";
-import NormalMidnightHoursCalculator from "./time-calculator/normalMidnightHoursCalculator";
+import CommandSignOut from "./command/commandSignOut";
+import WorkedHoursCalculator from "./time-calculator/workedHoursCalculator";
+import OvertimeHoursCalculator from "./time-calculator/overtimeHoursCalculator";
+import MidnightHoursCalculator from "./time-calculator/midnightHoursCalculator";
 import Calculator from "./calculator";
 import CommandDayTotal from "./command/commandDayTotal";
 
@@ -57,9 +57,9 @@ export default class Application extends Container {
         this.bind<Command>(TYPES.CommandNoRest).to(CommandNoRest);
         this.bind<Command>(TYPES.CommandRestHours).to(CommandRestHours);
 
-        this.bind<TimeCalculator>(TYPES.NormalWorkedHoursCalculator).to(NormalWorkedHoursCalculator);
-        this.bind<TimeCalculator>(TYPES.NormalOvertimeHoursCalculator).to(NormalOvertimeHoursCalculator);
-        this.bind<TimeCalculator>(TYPES.NormalMidnightHoursCalculator).to(NormalMidnightHoursCalculator);
+        this.bind<TimeCalculator>(TYPES.workedHoursCalculator).to(WorkedHoursCalculator);
+        this.bind<TimeCalculator>(TYPES.overtimeHoursCalculator).to(OvertimeHoursCalculator);
+        this.bind<TimeCalculator>(TYPES.midnightHoursCalculator).to(MidnightHoursCalculator);
         this.bind<Calculator>(TYPES.Calculator).to(Calculator);
     }
 }
