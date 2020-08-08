@@ -30,17 +30,22 @@ yarn install
 
 ### Slack Appの設定
 
+- Slack Verification Tokenを取得
 - Slack Bot User Tokenを取得
 - Slack Incoming Urlを取得
 
 ### env
 
-envにSlack Appの情報を追加
+envに取得したSlack Appの情報を追加
 
 ### google apps scriptの設定
+googleにログイン
+
 ```
 yarn clasp login
 ```
+
+google apps scriptのプロジェクトを作成
 
 ```
 yarn clasp create
@@ -53,4 +58,7 @@ google apps scriptで　ファイル＞プロジェクトのプロパティ＞�
 yarn deploy
 ```
 
-google apps scriptで　公開＞Webアプリケーションとして導入　で公開する
+- google apps scriptで　公開＞Webアプリケーションとして導入　で公開する
+- 公開したURLをslack event subscriberに入力する
+
+### 完了
