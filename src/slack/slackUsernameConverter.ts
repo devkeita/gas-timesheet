@@ -3,7 +3,7 @@ import {TYPES} from "../types";
 
 @injectable()
 export default class SlackUsernameConverter {
-    constructor(@inject(TYPES.BotUserToken) readonly token: string) {}
+    constructor(@inject(TYPES.SlackBotUserToken) readonly token: string) {}
 
     convert(userID: string): string {
         const url = `https://slack.com/api/users.info?token=${this.token}&user=${userID}`;

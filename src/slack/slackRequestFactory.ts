@@ -9,11 +9,17 @@ import SlackUsernameConverter from "./slackUsernameConverter";
 export default class SlackRequestFactory implements RequestFactory {
     constructor(
         @inject(TYPES.UserResolver) readonly userResolver: UserResolver,
-        @inject(TYPES.UsernameConverter) readonly usernameConverter: SlackUsernameConverter
+        @inject(TYPES.UsernameConverter) readonly usernameConverter: SlackUsernameConverter,
+        @inject(TYPES.SlackVerificationToken) readonly slackVerificationToken: string
     ) {}
 
     factory(e): Request {
         const params = JSON.parse(e.postData.getDataAsString());
+
+        if (params.token !== this.slackVerificationToken) {
+            // verification tokenが違ったら反応しない
+            return null;
+        }
 
         if (params.type === 'url_verification') {
             // challengeをresponseとして返す

@@ -29,7 +29,8 @@ import CommandDayTotal from "./command/commandDayTotal";
 export default class Application extends Container {
     boot() {
         this.bind(TYPES.SlackIncomingUrl).toConstantValue(process.env.SLACK_INCOMING_URL);
-        this.bind(TYPES.BotUserToken).toConstantValue(process.env.BOT_USER_TOKEN);
+        this.bind(TYPES.SlackBotUserToken).toConstantValue(process.env.SLACK_BOT_USER_TOKEN);
+        this.bind(TYPES.SlackVerificationToken).toConstantValue(process.env.SLACK_VERIFICATION_TOKEN);
         this.bind(TYPES.Container).toConstantValue(this);
 
         this.bind<Properties>(TYPES.ScriptProperties).toConstantValue(PropertiesService.getScriptProperties());
