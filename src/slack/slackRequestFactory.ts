@@ -7,8 +7,9 @@ import SlackUsernameConverter from "./slackUsernameConverter";
 
 @injectable()
 export default class SlackRequestFactory implements RequestFactory {
-    constructor(@inject(TYPES.UserResolver) readonly userResolver: UserResolver,
-                @inject(TYPES.UsernameConverter) readonly usernameConverter: SlackUsernameConverter
+    constructor(
+        @inject(TYPES.UserResolver) readonly userResolver: UserResolver,
+        @inject(TYPES.UsernameConverter) readonly usernameConverter: SlackUsernameConverter
     ) {}
 
     factory(e): Request {
@@ -16,7 +17,7 @@ export default class SlackRequestFactory implements RequestFactory {
 
         if (params.type === 'url_verification') {
             // challengeをresponseとして返す
-            return null;
+            throw new Error(params.challenge);
         }
 
         if (params.type !== 'event_callback' || params.event.type !== 'message') {

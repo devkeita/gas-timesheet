@@ -4,6 +4,7 @@ import Application from "./application";
 import {TYPES} from "./types";
 import CommandResolver from "./command/commandResolver";
 import I18nFactory from "./i18nFactory";
+import Request from "./request";
 
 declare var global: any;
 
@@ -11,7 +12,13 @@ global.doPost = (e) => {
     const app = new Application();
     app.boot();
 
-    const req = app.get<RequestFactory>(TYPES.RequestFactory).factory(e);
+    let req: Request;
+    try {
+        req = app.get<RequestFactory>(TYPES.RequestFactory).factory(e);
+    } catch (e) {
+        // url_verificationのときchallengeパラメーターを返す
+        return ContentService.createTextOutput(e.message);
+    }
 
     if (req) {
         const command = app.get<CommandResolver>(TYPES.CommandResolver).resolve(req);
