@@ -1,6 +1,7 @@
 const TYPES = {
     SlackIncomingUrl: Symbol.for("SlackIncomingUrl"),
-    BotUserToken: Symbol.for("BotUserToken"),
+    SlackBotUserToken: Symbol.for("BotUserToken"),
+    SlackVerificationToken: Symbol.for("SlackVerificationToken"),
     Container: Symbol.for("Container"),
     ScriptProperties: Symbol.for("ScriptProperties"),
     Configure: Symbol.for("Configure"),
