@@ -50,7 +50,7 @@ google apps scriptで　ファイル＞プロジェクトのプロパティ＞�
 
 ### deploy
 ```
-yarn clasp push
+yarn deploy
 ```
 
 google apps scriptで　公開＞Webアプリケーションとして導入　で公開する
