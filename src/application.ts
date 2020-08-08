@@ -15,7 +15,6 @@ import SlackUsernameConverter from "./slack/slackUsernameConverter";
 import CommandRegistry from "./command/commandRegistry";
 import CommandResolver from "./command/commandResolver";
 import i18nFactory from "./i18nFactory";
-import Message from "./messages/message";
 import CommandNoRest from "./command/commandNoRest";
 import CommandRestHours from "./command/commandRestHours";
 import CommandSignIn from "./command/commandSignIn";
@@ -43,7 +42,6 @@ export default class Application extends Container {
         this.bind<UserResolver>(TYPES.UserResolver).to(UserResolver);
         this.bind<SlackUsernameConverter>(TYPES.UsernameConverter).to(SlackUsernameConverter);
 
-        this.bind<Message>(TYPES.Message).to(Message);
         this.bind<i18nFactory>(TYPES.I18nFactory).to(i18nFactory);
 
         this.bind<RequestFactory>(TYPES.RequestFactory).to(SlackRequestFactory);
