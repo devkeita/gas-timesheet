@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "build": "rimraf dist && webpack && cpx appsscript.json dist"
+    "build": "rimraf dist && webpack && cpx appsscript.json dist",
+    "deploy": "yarn build && clasp push"
   },
   "dependencies": {
     "@types/node": "^14.0.23",
