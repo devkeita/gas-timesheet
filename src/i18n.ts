@@ -3,6 +3,8 @@ import * as dayjs from "dayjs";
 import Dayjs = dayjs.Dayjs;
 
 export default class I18n extends Polyglot {
+    readonly acceptableLocale = ['ja', 'en'];
+
     constructor(locale: string, private messages: {[key: string]: {}}) {
         super({phrases: messages, locale: locale});
     }
@@ -88,13 +90,28 @@ export default class I18n extends Polyglot {
         return null;
     };
 
-
     parseHours(str: string): number | null {
         const regex = new RegExp('(\\d*\\.?\\d*)\\s*' + this.t('dateTimeSettings.hours'), 'i');
         const matches = str.match(regex);
         if (matches) {
             return Number(matches[1]);
         }
+        return null;
+    }
+
+    parseLocale(str: string): string {
+        let locales = '(';
+        this.acceptableLocale.forEach((locale) => {
+            locales += locale + '|';
+        });
+        locales = locales.slice(0, -1);
+        locales += ')';
+        const regex = new RegExp(locales, 'i');
+        const matches = str.match(regex);
+        if (matches) {
+            return matches[0];
+        }
+
         return null;
     }
 }

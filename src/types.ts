@@ -19,6 +19,7 @@ const TYPES = {
     CommandSignOut: Symbol.for("CommandSignOut"),
     CommandNoRest: Symbol.for("CommandNoRest"),
     CommandRestHours: Symbol.for("CommandRestHours"),
+    CommandChangeLocale: Symbol.for("CommandChangeLocale"),
     workedHoursCalculator: Symbol.for("workedHoursCalculator"),
     overtimeHoursCalculator: Symbol.for("overtimeHoursCalculator"),
     midnightHoursCalculator: Symbol.for("midnightHoursCalculator"),

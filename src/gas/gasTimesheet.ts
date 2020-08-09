@@ -10,11 +10,16 @@ import {Timesheet} from "../interfaces";
 export default class GasTimesheet implements Timesheet {
     readonly username: string;
 
-    readonly locale: string;
+    private locale: string;
 
     constructor(private sheet: Sheet) {
         this.username = this.sheet.getName();
         this.locale = this.sheet.getRange('B1').getValue().toString();
+    }
+
+    setLocale(locale: string): void {
+        this.locale = locale;
+        this.sheet.getRange('B1').setValue(locale);
     }
 
     getRow(date: Dayjs): GasRow {

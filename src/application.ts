@@ -24,6 +24,7 @@ import OvertimeHoursCalculator from "./time-calculator/overtimeHoursCalculator";
 import MidnightHoursCalculator from "./time-calculator/midnightHoursCalculator";
 import Calculator from "./calculator";
 import CommandDayTotal from "./command/commandDayTotal";
+import CommandChangeLocale from "./command/commandChangeLocale";
 
 export default class Application extends Container {
     boot() {
@@ -55,6 +56,7 @@ export default class Application extends Container {
         this.bind<Command>(TYPES.CommandSignOut).to(CommandSignOut);
         this.bind<Command>(TYPES.CommandNoRest).to(CommandNoRest);
         this.bind<Command>(TYPES.CommandRestHours).to(CommandRestHours);
+        this.bind<Command>(TYPES.CommandChangeLocale).to(CommandChangeLocale);
 
         this.bind<TimeCalculator>(TYPES.workedHoursCalculator).to(WorkedHoursCalculator);
         this.bind<TimeCalculator>(TYPES.overtimeHoursCalculator).to(OvertimeHoursCalculator);
