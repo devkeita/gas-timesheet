@@ -88,13 +88,22 @@ export default class I18n extends Polyglot {
         return null;
     };
 
-
     parseHours(str: string): number | null {
         const regex = new RegExp('(\\d*\\.?\\d*)\\s*' + this.t('dateTimeSettings.hours'), 'i');
         const matches = str.match(regex);
         if (matches) {
             return Number(matches[1]);
         }
+        return null;
+    }
+
+    parseLocale(str: string): string {
+        const regex = new RegExp('(ja|en)', 'i');
+        const matches = str.match(regex);
+        if (matches) {
+            return matches[0];
+        }
+
         return null;
     }
 }
