@@ -21,6 +21,7 @@ export default class CommandSignOut implements Command {
 
         const date = parsedDate || now;
         const time = parsedTime || now;
+        const datetime = date.clone().set('hour', time.hour()).set('minute', time.minute());
 
         const row = user.timesheet.getRow(date);
 
@@ -45,22 +46,22 @@ export default class CommandSignOut implements Command {
 
         let message;
         if (row.getSignOut()) {
-            row.setSignOut(time);
+            row.setSignOut(datetime);
             this.commandDayTotal.execute(request, i18n);
             message = i18n.template('signOutUpdate', {
                 username: user.username,
-                date: time.format('YYYY/MM/DD'),
-                time: time.format('HH:mm'),
+                date: datetime.format('YYYY/MM/DD'),
+                time: datetime.format('HH:mm'),
                 signIn: row.getSignIn().format('HH:mm'),
-                signOut: row.getSignIn().format('HH:mm'),
+                signOut: row.getSignOut().format('HH:mm'),
                 workedHours: row.getWorkedHours(),
             });
         } else {
-            row.setSignOut(time);
+            row.setSignOut(datetime);
             this.commandDayTotal.execute(request, i18n);
             message = i18n.template('signOut', {
                 username: user.username,
-                datetime: time.format('YYYY/MM/DD HH:mm'),
+                datetime: datetime.format('YYYY/MM/DD HH:mm'),
                 signIn: row.getSignIn().format('HH:mm'),
                 signOut: row.getSignOut().format('HH:mm'),
                 workedHours: row.getWorkedHours(),
