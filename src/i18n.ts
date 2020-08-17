@@ -3,10 +3,14 @@ import * as dayjs from "dayjs";
 import Dayjs = dayjs.Dayjs;
 
 export default class I18n extends Polyglot {
-    readonly acceptableLocale = ['ja', 'en'];
+    readonly acceptableLocale: string[] = process.env.ACCEPTABLE_LOCALE.split(',');
 
     constructor(locale: string, private messages: {[key: string]: {}}) {
         super({phrases: messages, locale: locale});
+    }
+
+    getCommands(): {[key:string]:string} {
+        return this.messages.commands;
     }
 
     template(key: string, option?: {}) {
