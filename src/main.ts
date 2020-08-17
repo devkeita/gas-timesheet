@@ -24,7 +24,7 @@ global.doPost = (e) => {
         const command = app.get<CommandResolver>(TYPES.CommandResolver).resolve(req);
 
         if (command) {
-            const i18n = app.get<I18nFactory>(TYPES.I18nFactory).factory('ja')
+            const i18n = app.get<I18nFactory>(TYPES.I18nFactory).factory(req.user.timesheet.getLocale())
             const response = command.execute(req, i18n);
             app.get<ResponseHandler>(TYPES.ResponseHandler).handle(response);
         } else {
