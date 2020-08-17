@@ -47,6 +47,7 @@ export interface Sheets {
 }
 
 export interface Timesheet {
+    getLocale(): string;
     setLocale(locale: string): void;
     getRow(date: Dayjs): Row;
 }

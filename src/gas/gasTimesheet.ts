@@ -17,6 +17,10 @@ export default class GasTimesheet implements Timesheet {
         this.locale = this.sheet.getRange('B1').getValue().toString();
     }
 
+    getLocale(): string {
+        return this.locale;
+    }
+
     setLocale(locale: string): void {
         this.locale = locale;
         this.sheet.getRange('B1').setValue(locale);

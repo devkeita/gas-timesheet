@@ -18,6 +18,7 @@ export default class CommandSignIn implements Command {
 
         const date = parsedDate || now;
         const time = parsedTime || now;
+        const datetime = date.clone().set('hour', time.hour()).set('minute', time.minute());
 
         const row = user.timesheet.getRow(date);
 
@@ -33,32 +34,32 @@ export default class CommandSignIn implements Command {
                     );
                 } else {
                     // 出勤時間を更新する
-                    row.setDate(date);
-                    row.setSignIn(time);
+                    row.setDate(datetime);
+                    row.setSignIn(datetime);
                     return new Response(
                         i18n.template('signInUpdate', {
                             username: user.username,
-                            date: time.format('YYYY/MM/DD'),
-                            time: time.format('HH:mm')
+                            date: datetime.format('YYYY/MM/DD'),
+                            time: datetime.format('HH:mm')
                         })
                     );
                 }
             } else {
-                row.setDate(date);
-                row.setSignIn(time);
+                row.setDate(datetime);
+                row.setSignIn(datetime);
                 row.setRestTimeHours(1);
 
                 return new Response(
                     i18n.template('signIn', {
                         username: user.username,
-                        datetime: time.format('YYYY/MM/DD HH:mm')
+                        datetime: datetime.format('YYYY/MM/DD HH:mm')
                     })
                 );
             }
         }
 
         return new Response(
-            'ivalid date:' + date.format('YYYY/MM/DD')
+            'invalid date:' + date.format('YYYY/MM/DD')
         );
     }
 }
