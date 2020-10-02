@@ -1,6 +1,7 @@
+import {inject, injectable} from "inversify";
+
 import Request from "../request";
 import {RequestFactory} from "../interfaces";
-import {inject, injectable} from "inversify";
 import {TYPES} from "../types";
 import UserResolver from "../userResolver";
 import SlackUsernameConverter from "./slackUsernameConverter";
@@ -10,7 +11,8 @@ export default class SlackRequestFactory implements RequestFactory {
     constructor(
         @inject(TYPES.UserResolver) readonly userResolver: UserResolver,
         @inject(TYPES.UsernameConverter) readonly usernameConverter: SlackUsernameConverter,
-        @inject(TYPES.SlackVerificationToken) readonly slackVerificationToken: string
+        @inject(TYPES.SlackVerificationToken) readonly slackVerificationToken: string,
+        @inject(TYPES.SlackChannelId) readonly slackChannelId: string
     ) {}
 
     factory(e): Request {
@@ -28,6 +30,10 @@ export default class SlackRequestFactory implements RequestFactory {
 
         if (params.type !== 'event_callback' || params.event.type !== 'message') {
             // イベントがメッセージじゃなかったら反応しない
+            return null;
+        }
+
+        if (params.event.channel !== this.slackChannelId) {
             return null;
         }
 
