@@ -55,4 +55,12 @@ describe('n18n', () => {
             expect(date).toBe(expectedDate);
         });
     });
+
+    describe('parseHours', () => {
+        it('input: 2時間', function () {
+            const hours = sut.parseHours('2時間').toString();
+            const expectedHours = '2';
+            expect(hours).toBe(expectedHours);
+        });
+    })
 });
