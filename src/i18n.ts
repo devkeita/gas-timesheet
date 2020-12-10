@@ -3,7 +3,10 @@ import * as dayjs from "dayjs";
 import Dayjs = dayjs.Dayjs;
 
 export default class I18n extends Polyglot {
-    readonly acceptableLocale: string[] = process.env.ACCEPTABLE_LOCALES.split(',');
+    readonly acceptableLocale: string[] = process.env.NODE_ENV === 'test'
+        ? ['ja']
+        : process.env.ACCEPTABLE_LOCALES.split(',')
+    ;
 
     constructor(locale: string, private messages: {[key: string]: {}}) {
         super({phrases: messages, locale: locale});
@@ -39,7 +42,6 @@ export default class I18n extends Polyglot {
         const matches = str.match(reg);
 
         if (matches) {
-            console.log(matches);
             let hour = Number(matches[2]) || Number(matches[4]);
             let min = Number(matches[3]) || Number(matches[5]) || 0;
 
